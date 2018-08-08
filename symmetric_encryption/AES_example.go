@@ -9,6 +9,11 @@ import (
 	"io"
 )
 
+// Notes:
+// See https://www.packtpub.com/networking-and-servers/mastering-go chapter 6
+// See https://golang.org/pkg/crypto/cipher/#NewGCM (expand examples)
+// See Java Cryptography: Tools and Techniques chapters 2 and 4
+
 func toByteArray(s string) []byte {
 	bytes := make([]byte, len(s))
 
