@@ -8,9 +8,9 @@ import (
 )
 
 func printUsage() {
-	fmt.Printf("Usage: %s %s %s\n", os.Args[0], "<option: [HASH|HASH_PASS]>", "<filename>")
+	fmt.Printf("Usage: %s %s %s\n", os.Args[0], "<option: [HASH|HASH_PASS]>", "[<filename>|password]")
 	fmt.Printf("Example: %s %s %s\n", os.Args[0], "HASH", "image.iso")
-	fmt.Printf("Example: %s %s %s\n", os.Args[0], "HASH_PASS", "password.txt")
+	fmt.Printf("Example: %s %s %s\n", os.Args[0], "HASH_PASS", "password")
 }
 
 func readOptionFromArgs() string {
@@ -27,12 +27,14 @@ func main() {
 
 	if option == "HASH" {
 		filename := os.Args[2]
-		fmt.Println(filename)
+		fmt.Println("HASH ", filename)
 
 		hash.HashFile(filename)
 	} else if option == "HASH_PASS" {
-		filename := os.Args[2]
-		fmt.Println(filename)
+		password := os.Args[2]
+		fmt.Println("HASH PASSWORD", password)
+
+		hash.HashPassword(password)
 	} else {
 		printUsage()
 		os.Exit(1)
