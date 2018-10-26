@@ -80,3 +80,15 @@ func HashFile(filename string) {
 	}
 
 }
+
+func ComputeDigest(digestName string, data []byte) []byte {
+	var result []byte
+	switch digestName {
+	case "SHA-256":
+		digest := sha256.Sum256(data)
+		result = digest[:]
+	default:
+		log.Fatalln("Unexpected digest name", digestName)
+	}
+	return result
+}
